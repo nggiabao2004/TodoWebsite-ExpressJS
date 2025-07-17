@@ -1,7 +1,7 @@
 # Todo App API (ExpressJS + MongoDB)
 
-Ứng dụng quản lý Todo với tính năng đăng ký, đăng nhập, xác thực JWT và thao tác CRUD Todo.
-- Mục tiêu: Rèn luyện CRUD API, Token và Hash password
+Website quản lý "công việc" (Todo) với tính năng đăng ký/ đăng nhập tài khoản, xác thực JWT và thao tác CRUD (Create-Read-Update-Delete) các Task công việc.
+- Mục tiêu: Rèn luyện CRUD API, JWT và Javascript
 - Công cụ: Postman, Swagger Editor, MongoDB, Visual Studio Code
 
 ## 1. Cài đặt và khởi động dự án
@@ -43,7 +43,7 @@ npm start
 
 ## 2. Các bước test API User (Register, Login, Profile)
 
-### 1. Đăng ký tài khoản (Register)
+### Bước 1. Đăng ký tài khoản (Register)
 - Gửi request `POST` tới: `http://localhost:3000/api/user/register`
 - Body (JSON):
   ```json
@@ -54,7 +54,7 @@ npm start
   ```
 - Nếu thành công sẽ nhận được thông báo đăng ký thành công.
 
-### 2. Đăng nhập (Login)
+### Bước 2. Đăng nhập (Login)
 - Gửi request `POST` tới: `http://localhost:3000/api/user/login`
 - Body (JSON):
   ```json
@@ -65,7 +65,7 @@ npm start
   ```
 - Nếu thành công sẽ nhận được một trường `token` trong response.
 
-### 3. Lấy thông tin Profile
+### Bước 3. Lấy thông tin Profile
 - Gửi request `GET` tới: `http://localhost:3000/api/user/profile`
 - Trong tab **Headers** của Postman, thêm:
   ```
@@ -83,10 +83,10 @@ npm start
 
 ## 3. Các bước test API Todo
 
-### 1. Lấy danh sách Todo
+### API 1. Lấy danh sách Todo
 - `GET http://localhost:3000/api/todo`
 
-### 2. Thêm mới Todo
+### API 2. Thêm mới Todo
 - `POST http://localhost:3000/api/todo`
 - Body (JSON):
   ```json
@@ -96,10 +96,10 @@ npm start
   }
   ```
 
-### 3. Lấy chi tiết Todo theo id
+### API 3. Lấy chi tiết Todo theo id
 - `GET http://localhost:3000/api/todo/{id}`
 
-### 4. Cập nhật Todo theo id
+### API 4. Cập nhật Todo theo id
 - `PUT http://localhost:3000/api/todo/{id}`
 - Body (JSON): (giống như API POST CreateTodo)
   ```json
@@ -108,7 +108,7 @@ npm start
     "description": "Hoàn thành README.md"
   }
 
-### 5. Xóa Todo theo id
+### API 5. Xóa Todo theo id
 - `DELETE http://localhost:3000/api/todo/{id}`
 
 ---
