@@ -1,7 +1,7 @@
 # Todo App API (ExpressJS + MongoDB)
 
-Website quản lý "công việc" (Todo) với tính năng đăng ký/ đăng nhập tài khoản, xác thực JWT và thao tác CRUD (Create-Read-Update-Delete) các Task công việc.
-- Mục tiêu: Rèn luyện CRUD API, JWT và Javascript
+Website quản lý "công việc" (Todo) với tính năng đăng ký/ đăng nhập tài khoản, xác thực JWT và thao tác CRUD (Create-Read-Update-Delete) các Task công việc. Ngoài ra còn có chatbot (chạy API Gemini) để giúp tìm hiểu thông tin, xử lý công việc 1 cách nhanh chóng và hiệu quả.
+- Mục tiêu: Rèn luyện CRUD API, JWT và Javascript. Và thêm API Gemini vào chatbot
 - Công cụ: Postman, Swagger Editor, MongoDB, Visual Studio Code
 
 ## 1. Cài đặt và khởi động dự án
