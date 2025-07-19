@@ -120,7 +120,7 @@ npm start
 - File tài liệu: `swagger.yaml`
 - Có thể xem trực tiếp tại [https://editor.swagger.io/](https://editor.swagger.io/) bằng cách copy nội dung file vào.
 
-## 5. Hướng dẫn tạo API KEY Gemini (Google Generative AI)
+## 5. Hướng dẫn tạo API KEY Gemini (Google Generative AI) và sử dụng trong project
 
 Để sử dụng tính năng Chatbot AI Gemini, bạn cần tạo API Key từ Google AI Studio:
 
