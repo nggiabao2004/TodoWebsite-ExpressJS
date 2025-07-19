@@ -146,7 +146,13 @@ npm start
 
   (Thay `your_api_key_gemini` bằng API Key bạn vừa sao chép.)
 
-### Bước 4: Khởi động lại server
+### Bước 4: Vào `chatbotController.js` và chỉnh sửa model AI Gemini theo thiết lập ban đầu từ `Create API Key`
+
+  ```
+    const model= genAI.getGenerativeModel({model: "<Model_AI_Gemini>"});
+  ```
+
+### Bước 5: Khởi động lại server
 
 - Sau khi cập nhật `.env`, hãy khởi động lại server để các thay đổi có hiệu lực:
 
@@ -156,6 +162,7 @@ npm start
 
 **Lưu ý:**
 - API Key Gemini chỉ dùng cho các model hỗ trợ bởi Google AI Studio (ví dụ: `gemini-pro`, hoặc `gemini-2.5-flash`).
+- Nếu có thay đổi model AI Gemini khác thì vào `chatbotController.js` và thay đổi model mình muốn xài (theo thiết lập ban đầu từ `Create API Key`)
 - Không chia sẻ API Key công khai để tránh bị lạm dụng.
 - Nếu gặp lỗi về model hoặc key, hãy tạo lại API Key mới tại `Google AI Studion`.
 
