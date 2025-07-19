@@ -12,6 +12,7 @@ Website quản lý "công việc" (Todo) với tính năng đăng ký/ đăng nh
 npm init -y
 npm install express bcrypt mongoose dotenv jsonwebtoken express-async-handler
 npm install --save-dev nodemon
+npm install @google/generative-ai
 ```
 
 ### Bước 2: Cấu hình script trong `package.json`
@@ -31,6 +32,7 @@ npm install --save-dev nodemon
 MONGO_URI=<Link MongoDB Cluster>
 MONGO_PORT=3000
 JWT_SECRET=<your_secret_key>
+GEMINI_API_KEY=<your_api_key_gemini>
 ```
 
 ### Bước 4: Khởi động server
@@ -118,3 +120,43 @@ npm start
 - File tài liệu: `swagger.yaml`
 - Có thể xem trực tiếp tại [https://editor.swagger.io/](https://editor.swagger.io/) bằng cách copy nội dung file vào.
 
+## 5. Hướng dẫn tạo API KEY Gemini (Google Generative AI)
+
+Để sử dụng tính năng Chatbot AI Gemini, bạn cần tạo API Key từ Google AI Studio:
+
+### Bước 1: Đăng nhập Google AI Studio
+
+- Truy cập: [https://aistudio.google.com/app/apikey](https://aistudio.google.com/app/apikey)
+- Đăng nhập bằng tài khoản Google của bạn.
+
+### Bước 2: Tạo API Key
+
+- Nhấn nút **Create API Key** (Tạo API Key).
+- Đặt tên cho key nếu muốn, sau đó nhấn **Create**.
+- Sao chép API Key vừa tạo.
+
+### Bước 3: Thêm API Key vào file `.env`
+
+- Mở file `.env` ở thư mục gốc dự án.
+- Thêm dòng sau (hoặc cập nhật nếu đã có):
+
+  ```
+  GEMINI_API_KEY=<your_api_key_gemini>
+  ```
+
+  (Thay `your_api_key_gemini` bằng API Key bạn vừa sao chép.)
+
+### Bước 4: Khởi động lại server
+
+- Sau khi cập nhật `.env`, hãy khởi động lại server để các thay đổi có hiệu lực:
+
+  ```bash
+  npm start
+  ```
+
+**Lưu ý:**
+- API Key Gemini chỉ dùng cho các model hỗ trợ bởi Google AI Studio (ví dụ: `gemini-pro`, hoặc `gemini-2.5-flash`).
+- Không chia sẻ API Key công khai để tránh bị lạm dụng.
+- Nếu gặp lỗi về model hoặc key, hãy tạo lại API Key mới tại `Google AI Studion`.
+
+---

@@ -2,7 +2,7 @@ const asyncHandler = require('express-async-handler');
 const Todo = require('../model/todoModel');
 
 const getListTodo = asyncHandler(async (req, res) => {
-   const listTodo = await Todo.find();
+   const listTodo = await Todo.find({user: req.user.id});
    res.status(200).json(listTodo);
 });
 
@@ -15,14 +15,15 @@ const createTodo = asyncHandler(async (req, res) => {
    const newTodo = await Todo.create({
       title,
       description,
-      completed: false
+      completed: false,
+      user: req.user.id
    });
    res.status(201).json(newTodo);
 });
 
 const getTodoById = asyncHandler(async (req, res) => {
    const todoById = await Todo.findById(req.params.id);
-   if(!todoById){
+   if(!todoById || todoById.user.toString() !== req.user.id){
       res.status(404);
       throw new Error("Khong tim thay Todo can tim")
    }
@@ -31,7 +32,7 @@ const getTodoById = asyncHandler(async (req, res) => {
 
 const updateTodo = asyncHandler(async (req, res) => {
    const todoById = await Todo.findById(req.params.id);
-   if(!todoById){
+   if(!todoById || todoById.user.toString() !== req.user.id){
       res.status(404);
       throw new Error("Khong tim thay Todo can tim");
    }
@@ -45,7 +46,7 @@ const updateTodo = asyncHandler(async (req, res) => {
 
 const deleteTodo = asyncHandler(async (req, res) => {
    const todoById = await Todo.findById(req.params.id);
-   if(!todoById){
+   if(!todoById || todoById.user.toString() !== req.user.id){
       res.status(404);
       throw new Error("Khong tim thay Todo can tim");
    }

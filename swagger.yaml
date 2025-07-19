@@ -1,8 +1,11 @@
 openapi: 3.0.0
 info:
-  title: Todo & User API
+  title: Todo, User & Gemini Chatbot API
   version: 1.0.0
-  description: API cho quản lý Todo và User (đăng ký, đăng nhập, profile)
+  description: API quản lý Todo, User (đăng ký, đăng nhập, profile) và Chatbot Gemini AI
+
+servers:
+  - url: http://localhost:3000
 
 paths:
   /api/user/register:
@@ -67,7 +70,9 @@ paths:
 
   /api/todo:
     get:
-      summary: Lấy danh sách tất cả Todo
+      summary: Lấy danh sách Todo của user (cần xác thực)
+      security:
+        - bearerAuth: []
       responses:
         '200':
           description: Danh sách Todo
@@ -78,7 +83,9 @@ paths:
                 items:
                   $ref: '#/components/schemas/Todo'
     post:
-      summary: Tạo mới một Todo
+      summary: Tạo mới một Todo (cần xác thực)
+      security:
+        - bearerAuth: []
       requestBody:
         required: true
         content:
@@ -95,7 +102,9 @@ paths:
 
   /api/todo/{id}:
     get:
-      summary: Lấy thông tin một Todo theo id
+      summary: Lấy thông tin một Todo theo id (cần xác thực)
+      security:
+        - bearerAuth: []
       parameters:
         - in: path
           name: id
@@ -112,7 +121,9 @@ paths:
         '404':
           description: Không tìm thấy Todo
     put:
-      summary: Cập nhật một Todo theo id
+      summary: Cập nhật một Todo theo id (cần xác thực)
+      security:
+        - bearerAuth: []
       parameters:
         - in: path
           name: id
@@ -135,7 +146,9 @@ paths:
         '404':
           description: Không tìm thấy Todo
     delete:
-      summary: Xóa một Todo theo id
+      summary: Xóa một Todo theo id (cần xác thực)
+      security:
+        - bearerAuth: []
       parameters:
         - in: path
           name: id
@@ -147,6 +160,35 @@ paths:
           description: Xóa thành công
         '404':
           description: Không tìm thấy Todo
+
+  /api/chatbot:
+    post:
+      summary: Gửi câu hỏi tới Gemini Chatbot (cần xác thực)
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                message:
+                  type: string
+              required:
+                - message
+      responses:
+        '200':
+          description: Phản hồi từ Gemini Chatbot
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  reply:
+                    type: string
+        '401':
+          description: Không có hoặc token không hợp lệ
 
 components:
   securitySchemes:
@@ -166,6 +208,14 @@ components:
           type: string
         completed:
           type: boolean
+        user:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
     TodoInput:
       type: object
       properties:
@@ -175,3 +225,5 @@ components:
           type: string
         completed:
           type: boolean
+      required:
+        - title

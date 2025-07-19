@@ -6,10 +6,10 @@ const errorHandler = require('./middleware/errorHandler');
 
 const todoRouter = require('./router/todoRouter');
 const userRouter = require('./router/userRouter');
+const chatbotRouter = require('./router/chatbotRouter');
 const port = process.env.MONGO_PORT || 3000;
 
 dbConnect();
-app.use(errorHandler);
 app.use(express.json());
 
 app.get("/", (req, res) => {
@@ -18,6 +18,9 @@ app.get("/", (req, res) => {
 
 app.use("/api/todo", todoRouter);
 app.use("/api/user", userRouter);
+app.use("/api/chatbot", chatbotRouter);
+
+app.use(errorHandler);
 
 app.listen(port, () => {
    console.log(`Server is running at port ${port}`);

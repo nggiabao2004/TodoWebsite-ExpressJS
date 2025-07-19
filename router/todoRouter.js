@@ -7,14 +7,15 @@ const {
    updateTodo,
    deleteTodo
 } = require('../controller/todoController');
+const authMiddleware = require('../middleware/authMiddleware');
 
 todoRouter.route('/')
-   .get(getListTodo)
-   .post(createTodo)
+   .get(authMiddleware, getListTodo)
+   .post(authMiddleware, createTodo)
 
 todoRouter.route("/:id")
-   .get(getTodoById)
-   .put(updateTodo)
-   .delete(deleteTodo)
+   .get(authMiddleware, getTodoById)
+   .put(authMiddleware, updateTodo)
+   .delete(authMiddleware, deleteTodo)
 
 module.exports = todoRouter;
