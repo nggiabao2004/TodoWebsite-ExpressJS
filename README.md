@@ -149,7 +149,7 @@ npm start
 ### Bước 4: Vào `chatbotController.js` và chỉnh sửa model AI Gemini theo thiết lập ban đầu từ `Create API Key`
 
   ```
-    const model= genAI.getGenerativeModel({model: "<Model_AI_Gemini>"});
+  const model= genAI.getGenerativeModel({model: "<Model_AI_Gemini>"});
   ```
 
 ### Bước 5: Khởi động lại server
